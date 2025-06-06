@@ -68,7 +68,7 @@ for file in latest_commit.files:
             model="command-r-plus",
             temperature=0.6,
         )
-    except CohereError as e1:
+    except cohere.CohereError as e1:
         print(f"command-r-plus failed: {e1}. Falling back to command-r...")
         response = client.chat(
             message=prompt,
