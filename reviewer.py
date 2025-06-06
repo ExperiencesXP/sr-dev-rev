@@ -8,12 +8,14 @@ def estimate_tokens(text: str) -> int:
 
 # Read secrets from environment variables
 
-cohere_api_key = os.environ["COHERE_API_KEY"]
+cohere_api_key = os.environ.get("COHERE_API_KEY", "").strip()
+gh_token = os.environ.get("TOKEN_GITHUB", "").strip()
+
 if not cohere_api_key:
-    cohere_api_key = os.environ.get("COHERE_API_KEY", "").strip()
-gh_token = os.environ["TOKEN_GITHUB"]
+    raise RuntimeError("Missing or empty COHERE_API_KEY environment variable")
+
 if not gh_token:
-    gh_token = os.environ.get("TOKEN_GITHUB", "").strip()
+    raise RuntimeError("Missing or empty TOKEN_GITHUB environment variable")
 
 # GitHub setup
 repo_name = os.environ.get("GITHUB_REPOSITORY")
