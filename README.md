@@ -9,8 +9,8 @@
 Every time you push to the `main` branch (or however you configure it), a GitHub Action runs a Python script that:
 
 1. Fetches your latest commit.
-2. Sends the code to OpenAI’s API with a prompt designed to simulate a very tired, very passive-aggressive senior developer.
-3. Posts the resulting roast directly as a comment on your repo.
+2. Sends the code to Cohere’s API with a prompt designed to simulate a very tired, very passive-aggressive senior developer.
+3. Posts the resulting code review directly as an issue on your repo.
 
 ---
 
