@@ -1,5 +1,6 @@
 import os
 import cohere
+from cohere.errors import CohereAPIError
 from github import Github
 
 def estimate_tokens(text: str) -> int:
@@ -65,24 +66,16 @@ for file in latest_commit.files:
     try:
         response = client.chat(
             message=prompt,
-            model="command-a",
+            model="command-r-plus",
             temperature=0.6,
         )
-    except cohere.CohereError as e1:
-        print(f"command-a failed: {e1}. Trying command-r-plus...")
-        try:
-            response = client.chat(
-                message=prompt,
-                model="command-r-plus",
-                temperature=0.6,
-            )
-        except cohere.CohereError as e2:
-            print(f"command-r-plus failed: {e2}. Falling back to command-r...")
-            response = client.chat(
-                message=prompt,
-                model="command-r",
-                temperature=0.6,
-            )
+    except CohereAPIError as e1:
+        print(f"command-r-plus failed: {e1}. Falling back to command-r...")
+        response = client.chat(
+            message=prompt,
+            model="command-r",
+            temperature=0.6,
+        )
 
     review = response.text.strip()
     if review:
