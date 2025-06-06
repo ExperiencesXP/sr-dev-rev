@@ -51,7 +51,7 @@ pip install cohere pygithub
 **Cohere API Keey:** Create a free account at [cohere.com](https://dashboard.cohere.com/api-keys), then generate your API key from the dashboard.
 **GitHub Personal Access Token:** Go to [GitHub Tokens Settings](https://github.com/settings/tokens), and generate a token with the `repo` scope enabled to allow access to your repositories.
 
-## Either use a `.env` file as instructed in step 4. or add your secrets to your repo as instructed in step 5.
+## Either use a `.env` file as instructed in step 5. or add your secrets to your repo as instructed in step 6.
 
 ### 5. Add .env File
 
