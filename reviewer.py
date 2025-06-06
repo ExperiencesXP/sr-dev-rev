@@ -1,6 +1,5 @@
 import os
 import cohere
-from cohere.errors import CohereError
 from github import Github
 
 def estimate_tokens(text: str) -> int:
